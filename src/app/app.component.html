@@ -9,32 +9,8 @@
     <th>Watch</th>
     <th>Times</th>
   </tr>
-  <tr>
-    <td>First watch</td>
-    <td>2000 - 0000</td>
-  </tr>
-  <tr>
-    <td>Middle watch</td>
-    <td>0000 - 0400</td>
-  </tr>
-  <tr>
-    <td>Morning watch</td>
-    <td>0400 - 0800</td>
-  </tr>
-  <tr>
-    <td>Forenoon watch</td>
-    <td>0800 - 1200</td>
-  </tr>
-  <tr>
-    <td>Afternoon watch</td>
-    <td>1200 - 1600</td>
-  </tr>
-  <tr>
-    <td>First dog watch</td>
-    <td>1600 - 1800</td>
-  </tr>
-  <tr>
-    <td>Last dog watch</td>
-    <td>1800 - 2000</td>
+  <tr *ngFor="let watch of watches">
+    <td>{{watch.name}}</td>
+    <td>{{watch.startHour | hour }} - {{watch.endHour | hour }}</td>
   </tr>
 </table>
