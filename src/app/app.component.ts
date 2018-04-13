@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    const now = new Date();
     this.watches = this.timeService.getWatches();
-    this.time = this.timeService.getShipsTime();
-    console.log(this.watches);
+    this.time = this.timeService.getShipsTime(now);
   }
 }
