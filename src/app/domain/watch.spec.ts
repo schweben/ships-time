@@ -29,10 +29,10 @@ describe('Watch', () => {
         expect(watch.isTimeInWatch(time)).toBeTruthy();
     });
 
-    it('0800 should not be in the watch', () => {
+    it('0800 should be in the watch', () => {
         const watch = new Watch('Test watch', 4, 8);
         const time = new Date(2018, 4, 13, 8, 0, 0, 0);
-        expect(watch.isTimeInWatch(time)).toBeFalsy();
+        expect(watch.isTimeInWatch(time)).toBeTruthy();
     });
 
     it('0900 should not be in the watch', () => {
@@ -47,10 +47,10 @@ describe('Watch', () => {
         expect(watch.isTimeInWatch(time)).toBeFalsy();
     });
 
-    it('0801 should not be in the watch', () => {
+    it('0801 should be in the watch', () => {
         const watch = new Watch('Test watch', 4, 8);
         const time = new Date(2018, 4, 13, 8, 1, 0, 0);
-        expect(watch.isTimeInWatch(time)).toBeFalsy();
+        expect(watch.isTimeInWatch(time)).toBeTruthy();
     });
 
     it('0400 should be 8 bells', () => {
