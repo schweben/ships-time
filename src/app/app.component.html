@@ -2,7 +2,8 @@
 <div style="text-align:center">
   <h1>{{ title }}</h1>
 </div>
-<h2>The current time is: {{ time }}</h2>
+<h2>The current time is {{ time | date:'mediumTime' }}</h2>
+<h2>The current ship's time is {{ shiptime }}</h2>
 
 <table class="watches">
   <tr>

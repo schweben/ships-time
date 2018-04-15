@@ -9,15 +9,22 @@ import { TimeService } from './service/time.service';
 export class AppComponent implements OnInit {
 
   public title = 'Ship\'s Time';
-  public time: string;
   public watches: any;
+  public time: Date;
+  public shiptime: string;
 
   constructor(private timeService: TimeService) {
   }
 
   public ngOnInit(): void {
-    const now = new Date();
+    this.setTime();
     this.watches = this.timeService.getWatches();
-    this.time = this.timeService.getShipsTime(now);
+  }
+
+  private setTime(): void {
+    setInterval(() => {
+      this.time = new Date();
+      this.shiptime = this.timeService.getShipsTime(this.time);
+    }, 1000);
   }
 }
