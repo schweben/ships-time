@@ -14,7 +14,7 @@ export class Watch {
         const mins = time.getMinutes();
 
         if (hours === this.startHour && mins >= 30) {
-                return true;
+            return true;
         }
 
         if (hours === this.endHour && mins < 30) {
@@ -44,13 +44,18 @@ export class Watch {
         time.setMilliseconds(0);
 
         let bells = 0;
-        const current = new Date(time);
+        const current = new Date(time.getTime());
         current.setHours(0, 0, 0, 0);
         current.setHours(this.startHour);
-        // current.setMinutes(current.getMinutes() + 30);
 
-        while (time > current) {
+        const lookAhead = new Date(time.getTime());
+        lookAhead.setHours(0, 0, 0, 0);
+        lookAhead.setHours(this.startHour);
+        lookAhead.setMinutes(lookAhead.getMinutes() + 30);
+
+        while ((current < time) && (lookAhead <= time)) {
             current.setMinutes(current.getMinutes() + 30);
+            lookAhead.setMinutes(lookAhead.getMinutes() + 30);
             bells++;
         }
         return bells;

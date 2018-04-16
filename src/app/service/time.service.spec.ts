@@ -15,7 +15,7 @@ describe('TimeService', () => {
         timeService = TestBed.get(TimeService);
     });
 
-    it('Should return an array of watches', () => {
+    it('should return an array of watches', () => {
         const watches = timeService.getWatches();
         expect(watches.length).toEqual(7);
         expect(watches[0].name).toBe('First Watch');
@@ -25,5 +25,10 @@ describe('TimeService', () => {
         expect(watches[4].name).toBe('Afternoon Watch');
         expect(watches[5].name).toBe('First Dog Watch');
         expect(watches[6].name).toBe('Last Dog Watch');
+    });
+
+    it('should return the correct ship\s time', () => {
+        const time = new Date(2018, 4, 16, 6, 0, 0, 0);
+        expect(timeService.getShipsTime(time)).toBe('Four bells in the Morning Watch');
     });
 });

@@ -27,13 +27,13 @@ describe('AppComponent', () => {
     timeService = TestBed.get(TimeService);
   });
 
-  it('Should create the app', () => {
+  it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it('Should initialise the app via OnInit', () => {
+  it('should initialise the app via OnInit', () => {
     spyOn(timeService, 'getWatches');
     spyOn(timeService, 'getShipsTime');
 

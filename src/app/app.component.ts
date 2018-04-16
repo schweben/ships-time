@@ -28,6 +28,6 @@ export class AppComponent implements OnInit {
 
     private setTime(): void {
         this.time = new Date();
-        this.shiptime = this.timeService.getShipsTime(this.time);
+        this.shiptime = this.timeService.getShipsTime(new Date(this.time.getTime()));
     }
 }

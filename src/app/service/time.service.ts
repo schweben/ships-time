@@ -15,16 +15,13 @@ export class TimeService {
         new Watch('Last Dog Watch', 18, 20),
     ];
 
-    private bells = {
-    };
-
     public getWatches(): Watch[] {
         return this.watches;
     }
 
     public getShipsTime(time: Date): string {
         const watch = this.getCurrentWatch(time);
-        const bells = this.getBells(watch);
+        const bells = this.getBells(time, watch);
         return `${bells} in the ${watch.name}`;
     }
 
@@ -40,18 +37,26 @@ export class TimeService {
         return currentWatch;
     }
 
-    private getBells(watch: Watch): string {
-        // const mins = now.getMinutes();
+    private getBells(time: Date, watch: Watch): string {
+        const bells = watch.getBells(time);
 
-        // 239 mins in normal watch
-        // 119 mins in dog watch
-        const now = new Date();
-        const bells = watch.getBells(now);
-
-        if (bells === 1) {
-            return 'One bell';
-        } else {
-            return `${bells} bells`;
+        switch (bells) {
+            case 1:
+                return 'One bell';
+            case 2:
+                return 'Two bells';
+            case 3:
+                return 'Three bells';
+            case 4:
+                return 'Four bells';
+            case 5:
+                return 'Five bells';
+            case 6:
+                return 'Six bells';
+            case 7:
+                return 'Seven bells';
+            case 8:
+                return 'Eight bells';
         }
     }
 }
