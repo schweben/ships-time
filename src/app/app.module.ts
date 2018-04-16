@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HourPipe } from './hour.pipe';
+import { MaterialModule } from './material.module';
 import { TimeService } from './service/time.service';
 
 @NgModule({
@@ -12,6 +13,7 @@ import { TimeService } from './service/time.service';
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
   ],
   providers: [
     TimeService,

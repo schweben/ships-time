@@ -1,17 +1,27 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<mat-toolbar color="primary">
   <h1>{{ title }}</h1>
-</div>
-<h2>The current time is {{ time | date:'mediumTime' }}</h2>
-<h2>The current ship's time is {{ shiptime }}</h2>
+</mat-toolbar>
 
-<table class="watches">
-  <tr>
-    <th>Watch</th>
-    <th>Times</th>
-  </tr>
-  <tr *ngFor="let watch of watches">
-    <td>{{watch.name}}</td>
-    <td>{{watch.startHour | hour }} - {{watch.endHour | hour }}</td>
-  </tr>
-</table>
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>The current time is {{ time | date:'mediumTime' }}</mat-card-title>
+    <mat-card-title>The current ship's time is {{ shiptime }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="watches">
+    <mat-table [dataSource]="watches">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Watch</mat-header-cell>
+        <mat-cell *matCellDef="let watch">{{watch.name}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="times">
+        <mat-header-cell *matHeaderCellDef>Times</mat-header-cell>
+        <mat-cell *matCellDef="let watch">{{watch.startHour | hour }} - {{watch.endHour | hour }}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+</mat-card>
