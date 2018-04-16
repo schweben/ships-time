@@ -18,12 +18,12 @@ describe('TimeService', () => {
     it('Should return an array of watches', () => {
         const watches = timeService.getWatches();
         expect(watches.length).toEqual(7);
-        expect(watches[0].name).toEqual('First watch');
-        expect(watches[1].name).toEqual('Middle watch');
-        expect(watches[2].name).toEqual('Morning watch');
-        expect(watches[3].name).toEqual('Forenoon watch');
-        expect(watches[4].name).toEqual('Afternoon watch');
-        expect(watches[5].name).toEqual('First dog watch');
-        expect(watches[6].name).toEqual('Last dog watch');
+        expect(watches[0].name).toBe('First Watch');
+        expect(watches[1].name).toBe('Middle Watch');
+        expect(watches[2].name).toBe('Morning Watch');
+        expect(watches[3].name).toBe('Forenoon Watch');
+        expect(watches[4].name).toBe('Afternoon Watch');
+        expect(watches[5].name).toBe('First Dog Watch');
+        expect(watches[6].name).toBe('Last Dog Watch');
     });
 });

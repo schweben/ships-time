@@ -30,8 +30,14 @@ export class Watch {
 
     public getBells(time: Date): number {
 
-        if (time.getHours() === this.startHour && time.getMinutes() === 0) {
-            return 8;
+        // If the time is not in the watch then return 0 immediately
+        if (!this.isTimeInWatch(time)) {
+            return 0;
+        }
+
+        if (time.getHours() === this.endHour && time.getMinutes() === 0) {
+            const maxBells = (this.endHour - this.startHour) * 2;
+            return maxBells;
         }
 
         time.setSeconds(0);
@@ -41,8 +47,9 @@ export class Watch {
         const current = new Date(time);
         current.setHours(0, 0, 0, 0);
         current.setHours(this.startHour);
+        // current.setMinutes(current.getMinutes() + 30);
 
-        while (current < time) {
+        while (time > current) {
             current.setMinutes(current.getMinutes() + 30);
             bells++;
         }
