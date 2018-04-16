@@ -1,15 +1,15 @@
 import { async, TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
+import { Watch } from './domain/watch';
 import { HourPipe } from './hour.pipe';
 import { MaterialModule } from './material.module';
 import { TimeService } from './service/time.service';
-import { MockTimeService } from './testing/time.service.mock';
 
 describe('AppComponent', () => {
+  let timeService: TimeService;
+
   beforeEach(() => {
-    let timeService: TimeService;
-    let spy: any;
 
     TestBed.configureTestingModule({
       declarations: [
@@ -23,12 +23,25 @@ describe('AppComponent', () => {
         TimeService,
       ],
     }).compileComponents();
+
+    timeService = TestBed.get(TimeService);
   });
 
   it('Should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
+  });
+
+  it('Should initialise the app via OnInit', () => {
+    spyOn(timeService, 'getWatches');
+    spyOn(timeService, 'getShipsTime');
+
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+
+    expect(timeService.getWatches).toHaveBeenCalledTimes(1);
+    expect(timeService.getShipsTime).toHaveBeenCalled();
   });
 
   it(`should have as title 'Ship's Time`, () => {
