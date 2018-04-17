@@ -4,9 +4,11 @@
 
 <mat-card class="card">
   <mat-card-header>
-    <mat-card-title>The current time is {{ time | date:'mediumTime' }}</mat-card-title>
-    <mat-card-title>The current ship's time is {{ shiptime }}</mat-card-title>
+    <mat-card-title>{{ shiptime }}</mat-card-title>
+    <mat-card-subtitle>{{ time | date:'mediumTime' }}</mat-card-subtitle>
   </mat-card-header>
+
+  <mat-divider></mat-divider>
 
   <mat-card-content class="watches">
     <mat-table [dataSource]="watches">
