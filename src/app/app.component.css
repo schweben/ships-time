@@ -5,3 +5,7 @@
 .watches {
     width: 300px;
 }
+
+.space-filler {
+    flex: 1 1 auto;
+}

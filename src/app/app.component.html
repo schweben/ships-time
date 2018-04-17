@@ -1,11 +1,13 @@
 <mat-toolbar color="primary">
-  <h1>{{ title }}</h1>
+  <span>{{ title }}</span>
+  <span class="space-filler"></span>
+  <img src="../assets/anchor.png"/>
 </mat-toolbar>
 
 <mat-card class="card">
   <mat-card-header>
     <mat-card-title>{{ shiptime }}</mat-card-title>
-    <mat-card-subtitle>{{ time | date:'mediumTime' }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ time | date:'HH:mm:ss' }}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-divider></mat-divider>
