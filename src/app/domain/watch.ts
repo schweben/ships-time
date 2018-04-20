@@ -10,8 +10,16 @@ export class Watch {
     }
 
     public isTimeInWatch(time: Date): boolean {
-        const hours = time.getHours();
+        let hours = time.getHours();
         const mins = time.getMinutes();
+
+        if (this.endHour === 0) {
+            this.endHour = 24;
+        }
+
+        if (this.endHour === 24 && hours === 0) {
+            hours = 24;
+        }
 
         if (hours === this.startHour && mins >= 30) {
             return true;
@@ -52,6 +60,10 @@ export class Watch {
         lookAhead.setHours(0, 0, 0, 0);
         lookAhead.setHours(this.startHour);
         lookAhead.setMinutes(lookAhead.getMinutes() + 30);
+
+        if (time.getHours() === 0 && time.getMinutes() === 0) {
+            time.setHours(24);
+        }
 
         while ((current < time) && (lookAhead <= time)) {
             current.setMinutes(current.getMinutes() + 30);

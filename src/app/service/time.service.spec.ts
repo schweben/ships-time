@@ -27,14 +27,14 @@ describe('TimeService', () => {
         expect(watches[6].name).toBe('Last Dog Watch');
     });
 
-    it('should return Eight bells of the Second Dog Watch', () => {
+    it('should return Four bells of the Last Dog Watch', () => {
         const time = new Date(2018, 4, 16, 20, 0);
-        expect(timeService.getShipsTime(time)).toBe('Eight bells of the Second Dog Watch');
+        expect(timeService.getShipsTime(time)).toBe('Four bells of the Last Dog Watch');
     });
 
     it('should return One bell of the First Watch', () => {
         const time = new Date(2018, 4, 16, 20, 30);
-        expect(timeService.getShipsTime(time)).toBe('One bell of the Second Dog Watch');
+        expect(timeService.getShipsTime(time)).toBe('One bell of the First Watch');
     });
 
     it('should return Two bells of the First Watch', () => {
