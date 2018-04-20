@@ -22,7 +22,7 @@ export class TimeService {
     public getShipsTime(time: Date): string {
         const watch = this.getCurrentWatch(time);
         const bells = this.getBells(time, watch);
-        return `${bells} in the ${watch.name}`;
+        return `${bells} of the ${watch.name}`;
     }
 
     private getCurrentWatch(time: Date): Watch {
