@@ -21,14 +21,14 @@ describe('Watch', () => {
     it('should return 0400 as not in the Test watch (0400 - 0800)', () => {
         const watch = new Watch('Test watch', 4, 8);
         const time = new Date(2018, 4, 13, 4, 0, 0, 0);
-        expect(watch.isTimeInWatch(time)).toBeFalsy();
+        expect(watch.isTimeInWatch(time)).toBeTruthy();
         expect(watch.getBells(time)).toBe(0);
     });
 
     it('should return 0429 as not in the Test watch (0400 - 0800)', () => {
         const watch = new Watch('Test watch', 4, 8);
         const time = new Date(2018, 4, 13, 4, 29, 0, 0);
-        expect(watch.isTimeInWatch(time)).toBeFalsy();
+        expect(watch.isTimeInWatch(time)).toBeTruthy();
         expect(watch.getBells(time)).toBe(0);
     });
 
@@ -147,21 +147,21 @@ describe('Watch', () => {
     it('should return 0800 as 8 bells of the Test watch (0400 - 0800)', () => {
         const watch = new Watch('Test watch', 4, 8);
         const time = new Date(2018, 4, 13, 8, 0, 0, 0);
-        expect(watch.isTimeInWatch(time)).toBeTruthy();
+        expect(watch.isTimeInWatch(time)).toBeFalsy();
         expect(watch.getBells(time)).toBe(8);
     });
 
     it('should return 0801 as 8 bells of the Test watch (0400 - 0800)', () => {
         const watch = new Watch('Test watch', 4, 8);
         const time = new Date(2018, 4, 13, 8, 1, 0, 0);
-        expect(watch.isTimeInWatch(time)).toBeTruthy();
+        expect(watch.isTimeInWatch(time)).toBeFalsy();
         expect(watch.getBells(time)).toBe(8);
     });
 
     it('should return 0829 as 8 bells of the Test watch (0400 - 0800)', () => {
         const watch = new Watch('Test watch', 4, 8);
         const time = new Date(2018, 4, 13, 8, 29, 0, 0);
-        expect(watch.isTimeInWatch(time)).toBeTruthy();
+        expect(watch.isTimeInWatch(time)).toBeFalsy();
         expect(watch.getBells(time)).toBe(8);
     });
 

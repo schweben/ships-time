@@ -10,28 +10,40 @@ export class Watch {
     }
 
     public isTimeInWatch(time: Date): boolean {
-        let hours = time.getHours();
-        const mins = time.getMinutes();
 
-        if (this.endHour === 0) {
-            this.endHour = 24;
-        }
+        const startTime = new Date(time.getDate());
+        startTime.setHours(this.startHour);
 
-        if (this.endHour === 24 && hours === 0) {
-            hours = 24;
-        }
+        const endTime = new Date(time.getDate());
+        endTime.setHours(this.endHour);
 
-        if (hours === this.startHour && mins >= 30) {
+        console.log(`time: ${time}; startTime: ${startTime}`)
+        if ((startTime < time) && (endTime > time)) {
             return true;
         }
 
-        if (hours === this.endHour && mins < 30) {
-            return true;
-        }
+        // let hours = time.getHours();
+        // const mins = time.getMinutes();
 
-        if (hours > this.startHour && hours < this.endHour) {
-            return true;
-        }
+        // if (this.endHour === 0) {
+        //     this.endHour = 24;
+        // }
+
+        // if (this.endHour === 24 && hours === 0) {
+        //     hours = 24;
+        // }
+
+        // if (hours === this.startHour && mins >= 30) {
+        //     return true;
+        // }
+
+        // if (hours === this.endHour && mins < 30) {
+        //     return true;
+        // }
+
+        // if (hours > this.startHour && hours < this.endHour) {
+        //     return true;
+        // }
 
         return false;
     }
@@ -39,9 +51,9 @@ export class Watch {
     public getBells(time: Date): number {
 
         // If the time is not in the watch then return 0 immediately
-        if (!this.isTimeInWatch(time)) {
-            return 0;
-        }
+        // if (!this.isTimeInWatch(time)) {
+        //     return 0;
+        // }
 
         if (time.getHours() === this.endHour && time.getMinutes() === 0) {
             const maxBells = (this.endHour - this.startHour) * 2;
