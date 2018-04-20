@@ -75,7 +75,7 @@ describe('TimeService', () => {
         expect(timeService.getCurrentWatch(time).name).toBe('First Watch');
     });
 
-    it('should return Eight bells of the First Watch (but current watch is Middle Watch)', () => {
+    it('should return Eight bells of the First Watch', () => {
         const time = new Date(2018, 4, 16, 0, 0);
         expect(timeService.getShipsTime(time)).toBe('Eight bells of the First Watch');
         expect(timeService.getCurrentWatch(time).name).toBe('Middle Watch');

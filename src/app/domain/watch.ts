@@ -11,39 +11,26 @@ export class Watch {
 
     public isTimeInWatch(time: Date): boolean {
 
-        const startTime = new Date(time.getDate());
-        startTime.setHours(this.startHour);
-
-        const endTime = new Date(time.getDate());
-        endTime.setHours(this.endHour);
-
-        console.log(`time: ${time}; startTime: ${startTime}`)
-        if ((startTime < time) && (endTime > time)) {
-            return true;
+        // An end hour of 00:00 is actually 24:00
+        if (this.endHour === 0) {
+            this.endHour = 24;
         }
 
-        // let hours = time.getHours();
-        // const mins = time.getMinutes();
+        const startTime = new Date(time);
+        startTime.setHours(this.startHour);
 
-        // if (this.endHour === 0) {
-        //     this.endHour = 24;
-        // }
+        const endTime = new Date(time);
+        endTime.setHours(this.endHour);
 
-        // if (this.endHour === 24 && hours === 0) {
-        //     hours = 24;
-        // }
+        // If the end time is 00:00 then incrememnt the date by 1 to
+        // make it 00:00 of the next day
+        if (this.endHour === 24 && time.getHours() === 0) {
+            time.setDate(time.getDate() + 1);
+        }
 
-        // if (hours === this.startHour && mins >= 30) {
-        //     return true;
-        // }
-
-        // if (hours === this.endHour && mins < 30) {
-        //     return true;
-        // }
-
-        // if (hours > this.startHour && hours < this.endHour) {
-        //     return true;
-        // }
+        if ((startTime <= time) && (endTime > time)) {
+            return true;
+        }
 
         return false;
     }
