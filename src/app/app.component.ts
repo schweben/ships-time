@@ -9,7 +9,6 @@ import { TimeService } from './service/time.service';
 })
 export class AppComponent implements OnInit {
 
-    public title = 'Ship\'s Time';
     public watches: any;
     public time: Date;
     public shiptime: string;
