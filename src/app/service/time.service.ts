@@ -25,7 +25,7 @@ export class TimeService {
         return `${bells} of the ${watch.name}`;
     }
 
-    private getCurrentWatch(time: Date): Watch {
+    public getCurrentWatch(time: Date): Watch {
         let currentWatch = null;
 
         this.watches.forEach((watch) => {

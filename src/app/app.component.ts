@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
     public time: Date;
     public shiptime: string;
     public displayedColumns = ['name', 'times'];
+    public currentWatch: string;
 
     constructor(private timeService: TimeService) {
     }
@@ -28,5 +29,6 @@ export class AppComponent implements OnInit {
     private setTime(): void {
         this.time = new Date();
         this.shiptime = this.timeService.getShipsTime(new Date(this.time.getTime()));
+        this.currentWatch = this.timeService.getCurrentWatch(new Date(this.time.getTime())).name;
     }
 }
