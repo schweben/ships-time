@@ -20,9 +20,16 @@ export class TimeService {
     }
 
     public getShipsTime(time: Date): string {
-        const watch = this.getCurrentWatch(time);
-        const bells = this.getBells(time, watch);
-        return `${bells} of the ${watch.name}`;
+        let watch = this.getCurrentWatch(time);
+        let bells = watch.getBells(time);
+
+        if ((bells < 1) || (bells > watch.getMaxBells())) {
+            watch = this.getPreviousWatch(watch);
+            bells = watch.getBells(time);
+        }
+        const bellText = this.getBellText(bells);
+
+        return `${bellText} of the ${watch.name}`;
     }
 
     public getCurrentWatch(time: Date): Watch {
@@ -37,8 +44,20 @@ export class TimeService {
         return currentWatch;
     }
 
-    private getBells(time: Date, watch: Watch): string {
-        const bells = watch.getBells(time);
+    private getPreviousWatch(currentWatch: Watch): Watch {
+        for (let i = 0; i < this.watches.length; i++) {
+
+            if (this.watches[i] === currentWatch) {
+                if (i > 0) {
+                    return this.watches[i - 1];
+                } else {
+                    return this.watches[this.watches.length - 1];
+                }
+            }
+        }
+    }
+
+    private getBellText(bells: number): string {
 
         switch (bells) {
             case 1:

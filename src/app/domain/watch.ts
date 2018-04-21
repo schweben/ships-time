@@ -43,8 +43,7 @@ export class Watch {
         // }
 
         if (time.getHours() === this.endHour && time.getMinutes() === 0) {
-            const maxBells = (this.endHour - this.startHour) * 2;
-            return maxBells;
+            return this.getMaxBells();
         }
 
         time.setSeconds(0);
@@ -70,5 +69,9 @@ export class Watch {
             bells++;
         }
         return bells;
+    }
+
+    public getMaxBells(): number {
+        return (this.endHour - this.startHour) * 2;
     }
 }
