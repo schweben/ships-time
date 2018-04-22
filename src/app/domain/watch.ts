@@ -3,28 +3,37 @@ export class Watch {
     public startHour: number;
     public endHour: number;
 
+    private adjustedEndHour: number;
+
     constructor(name: string, startHour: number, endHour: number) {
         this.name = name;
         this.startHour = startHour;
         this.endHour = endHour;
+
+        // An end hour of 00:00 is actually 24:00
+        if (this.endHour === 0) {
+            this.adjustedEndHour = 24;
+        } else {
+            this.adjustedEndHour = endHour;
+        }
     }
 
     public isTimeInWatch(time: Date): boolean {
 
-        // An end hour of 00:00 is actually 24:00
-        if (this.endHour === 0) {
-            this.endHour = 24;
-        }
+        // // An end hour of 00:00 is actually 24:00
+        // if (this.endHour === 0) {
+        //     this.endHour = 24;
+        // }
 
         const startTime = new Date(time);
         startTime.setHours(this.startHour);
 
         const endTime = new Date(time);
-        endTime.setHours(this.endHour);
+        endTime.setHours(this.adjustedEndHour);
 
-        // If the end time is 00:00 then incrememnt the date by 1 to
+        // If the end time is 00:00 then increment the date by 1 to
         // make it 00:00 of the next day
-        if (this.endHour === 24 && time.getHours() === 0) {
+        if (this.adjustedEndHour === 24 && time.getHours() === 0) {
             time.setDate(time.getDate() + 1);
         }
 
@@ -42,7 +51,7 @@ export class Watch {
         //     return 0;
         // }
 
-        if (time.getHours() === this.endHour && time.getMinutes() === 0) {
+        if (time.getHours() === this.adjustedEndHour && time.getMinutes() === 0) {
             return this.getMaxBells();
         }
 
@@ -72,6 +81,6 @@ export class Watch {
     }
 
     public getMaxBells(): number {
-        return (this.endHour - this.startHour) * 2;
+        return (this.adjustedEndHour - this.startHour) * 2;
     }
 }
