@@ -33,16 +33,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  // it('should initialise the app via OnInit', () => {
-  //   spyOn(timeService, 'getWatches');
-  //   spyOn(timeService, 'getShipsTime');
-  //   spyOn(timeService, 'getCurrentWatch');
+  it('should initialise the app via OnInit', () => {
+    spyOn(timeService, 'getWatches');
+    spyOn(timeService, 'getShipsTime');
+    spyOn(timeService, 'getCurrentWatch').and.returnValue('Dave');
 
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
 
-  //   expect(timeService.getWatches).toHaveBeenCalledTimes(1);
-  //   expect(timeService.getShipsTime).toHaveBeenCalled();
-  //   expect(timeService.getCurrentWatch).toHaveBeenCalled();
-  // });
+    expect(timeService.getWatches).toHaveBeenCalledTimes(1);
+    expect(timeService.getShipsTime).toHaveBeenCalled();
+    expect(timeService.getCurrentWatch).toHaveBeenCalled();
+  });
 });
