@@ -21,12 +21,14 @@ export class TimeService {
 
     public getShipsTime(time: Date): string {
         let watch = this.getCurrentWatch(time);
-        let bells = watch.getBells(time);
-
-        if ((bells < 1) || (bells > watch.getMaxBells())) {
+        let bells: number;
+        try {
+            bells = watch.getBells(time);
+        } catch (Error) {
             watch = this.getPreviousWatch(watch);
             bells = watch.getBells(time);
         }
+
         const bellText = this.getBellText(bells);
 
         return `${bellText} of the ${watch.name}`;

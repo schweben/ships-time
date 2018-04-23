@@ -20,11 +20,6 @@ export class Watch {
 
     public isTimeInWatch(time: Date): boolean {
 
-        // // An end hour of 00:00 is actually 24:00
-        // if (this.endHour === 0) {
-        //     this.endHour = 24;
-        // }
-
         const startTime = new Date(time);
         startTime.setHours(this.startHour);
 
@@ -45,11 +40,6 @@ export class Watch {
     }
 
     public getBells(time: Date): number {
-
-        // If the time is not in the watch then return 0 immediately
-        // if (!this.isTimeInWatch(time)) {
-        //     return 0;
-        // }
 
         if (time.getHours() === this.adjustedEndHour && time.getMinutes() === 0) {
             return this.getMaxBells();
@@ -77,6 +67,11 @@ export class Watch {
             lookAhead.setMinutes(lookAhead.getMinutes() + 30);
             bells++;
         }
+
+        if (bells === 0 || bells > this.getMaxBells()) {
+            throw new Error('Time is not in watch');
+        }
+
         return bells;
     }
 

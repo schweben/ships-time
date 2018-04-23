@@ -15,21 +15,18 @@ describe('Watch', () => {
         const watch = new Watch('Test watch', 4, 8);
         const time = new Date(2018, 4, 13, 3, 59, 0, 0);
         expect(watch.isTimeInWatch(time)).toBeFalsy();
-        expect(watch.getBells(time)).toBe(0);
     });
 
     it('should return 0400 as not in the Test watch (0400 - 0800)', () => {
         const watch = new Watch('Test watch', 4, 8);
         const time = new Date(2018, 4, 13, 4, 0, 0, 0);
         expect(watch.isTimeInWatch(time)).toBeTruthy();
-        expect(watch.getBells(time)).toBe(0);
     });
 
     it('should return 0429 as not in the Test watch (0400 - 0800)', () => {
         const watch = new Watch('Test watch', 4, 8);
         const time = new Date(2018, 4, 13, 4, 29, 0, 0);
         expect(watch.isTimeInWatch(time)).toBeTruthy();
-        expect(watch.getBells(time)).toBe(0);
     });
 
     it('should return 0430 as 1 bell of the Test watch (0400 - 0800)', () => {
@@ -169,21 +166,18 @@ describe('Watch', () => {
         const watch = new Watch('Test watch', 4, 8);
         const time = new Date(2018, 4, 13, 8, 30, 0, 0);
         expect(watch.isTimeInWatch(time)).toBeFalsy();
-        // expect(watch.getBells(time)).toBe(0);
     });
 
     it('should return 0831 as not in the Test watch (0400 - 0800)', () => {
         const watch = new Watch('Test watch', 4, 8);
         const time = new Date(2018, 4, 13, 8, 30, 0, 0);
         expect(watch.isTimeInWatch(time)).toBeFalsy();
-        // expect(watch.getBells(time)).toBe(0);
     });
 
     it('should return 0900 as not in the Test watch (0400 - 0800)', () => {
         const watch = new Watch('Test watch', 4, 8);
         const time = new Date(2018, 4, 13, 9, 0, 0, 0);
         expect(watch.isTimeInWatch(time)).toBeFalsy();
-        // expect(watch.getBells(time)).toBe(0);
     });
 
     it('should return 2030 as 1 bell of the Test Watch (2000 - 0000)', () => {
@@ -241,5 +235,53 @@ describe('Watch', () => {
         const time = new Date(2018, 4, 13, 0, 0, 0, 0);
         expect(watch.isTimeInWatch(time)).toBeFalsy();
         expect(watch.getBells(time)).toBe(8);
+    });
+
+    it('should throw an error for 0359 has an invalid number of bells in the Test watch (0400 - 0800)', () => {
+        const watch = new Watch('Test watch', 4, 8);
+        const time = new Date(2018, 4, 13, 3, 59, 0, 0);
+        expect(() => {
+            watch.getBells(time);
+        }).toThrowError('Time is not in watch');
+    });
+
+    it('should throw an error for 0400  has an invalid number of bells in the Test watch (0400 - 0800)', () => {
+        const watch = new Watch('Test watch', 4, 8);
+        const time = new Date(2018, 4, 13, 4, 0, 0, 0);
+        expect(() => {
+            watch.getBells(time);
+        }).toThrowError('Time is not in watch');
+    });
+
+    it('should throw an error for 0429  has an invalid number of bells in the Test watch (0400 - 0800)', () => {
+        const watch = new Watch('Test watch', 4, 8);
+        const time = new Date(2018, 4, 13, 4, 29, 0, 0);
+        expect(() => {
+            watch.getBells(time);
+        }).toThrowError('Time is not in watch');
+    });
+
+    it('should throw an error for 0830  has an invalid number of bells in the Test watch (0400 - 0800)', () => {
+        const watch = new Watch('Test watch', 4, 8);
+        const time = new Date(2018, 4, 13, 8, 30, 0, 0);
+        expect(() => {
+            watch.getBells(time);
+        }).toThrowError('Time is not in watch');
+    });
+
+    it('should throw an error for 0831  has an invalid number of bells in the Test watch (0400 - 0800)', () => {
+        const watch = new Watch('Test watch', 4, 8);
+        const time = new Date(2018, 4, 13, 8, 30, 0, 0);
+        expect(() => {
+            watch.getBells(time);
+        }).toThrowError('Time is not in watch');
+    });
+
+    it('should throw an error for 0900  has an invalid number of bells in the Test watch (0400 - 0800)', () => {
+        const watch = new Watch('Test watch', 4, 8);
+        const time = new Date(2018, 4, 13, 9, 0, 0, 0);
+        expect(() => {
+            watch.getBells(time);
+        }).toThrowError('Time is not in watch');
     });
 });
