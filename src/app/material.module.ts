@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MatCardModule, MatDividerModule, MatTableModule, MatToolbarModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
     imports: [
