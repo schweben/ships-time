@@ -13,6 +13,9 @@
     "max-line-length": [
       false
     ],
+    "deprecation": {
+      "severity": "warning"
+    },
     "quotemark": [
       true,
       "single"
