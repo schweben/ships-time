@@ -24,7 +24,7 @@ describe('AppComponent', () => {
       ],
     }).compileComponents();
 
-    timeService = TestBed.get(TimeService);
+    timeService = TestBed.inject(TimeService);
   });
 
   it('should create the app', () => {

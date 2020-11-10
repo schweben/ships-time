@@ -12,7 +12,7 @@ describe('TimeService', () => {
             ],
         }).compileComponents();
 
-        timeService = TestBed.get(TimeService);
+        timeService = TestBed.inject(TimeService);
     });
 
     it('should return an array of watches', () => {
