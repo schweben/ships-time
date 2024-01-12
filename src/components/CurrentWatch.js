@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import TimeService from '../service/TimeService';
+import styles from '../styles/currentwatch.module.css';
 
 export default function CurrentWatch() {
 	const [time, setTime] = useState(new Date());
@@ -20,7 +21,7 @@ export default function CurrentWatch() {
 	});
 
 	return (
-		<div>
+		<div className={styles.time}>
 			<h2>{shipsTime.current}</h2>
 			<h2>{time.toLocaleTimeString()}</h2>
 		</div>

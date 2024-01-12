@@ -22,8 +22,16 @@ export default function Watches() {
 		return currentWatch.name === watch.name ? styles.currentWatch : '';
 	}
 
+	function formatHour(hour) {
+		let formatted = '';
+		if (hour < 10) {
+			formatted = '0';
+		}
+		return formatted + hour + ':00';
+	}
+
 	return (
-		<div>
+		<div className={styles.watchTable}>
 			<table>
 				<thead>
 					<tr>
@@ -36,7 +44,7 @@ export default function Watches() {
 					return (
 						<tr key={index} className={getCurrentWatchClass(watch)}>
 							<td>{watch.name}</td>
-							<td>{watch.startHour} - {watch.endHour}</td>
+							<td>{formatHour(watch.startHour)} - {formatHour(watch.endHour)}</td>
 						</tr>
 					)
 				})}

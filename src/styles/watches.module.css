@@ -1,3 +1,29 @@
+.watchTable {
+	margin: auto;
+	width: 50%;
+}
+
+.watchTable table {
+	width: 100%;
+}
+
+.watchTable table, th, td {
+	border: 1px solid #ddd;
+	border-collapse: collapse;
+	padding: 8px;
+}
+
+.watchTable th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	background-color: gray;
+	color: white;
+}
+
+.watchTable tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
 .currentWatch {
-	background-color: red;
+	font-weight: bold;
 }
