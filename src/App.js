@@ -2,13 +2,11 @@ import React from 'react';
 import CurrentWatch from './components/CurrentWatch';
 import Watches from './components/Watches';
 
-import anchor from './anchor-background.jpg';
 import './App.css';
 
 function App() {
   return (
     <div className="app">
-      <img className="backgroundImage" src={anchor} alt="Anchor"/>
       <div className="header">
         <h1>Ship's Time</h1>
       </div>
