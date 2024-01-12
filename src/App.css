@@ -6,6 +6,11 @@
   background-position: center;
 }
 
+.app h1 {
+  margin-top: 0px;
+  padding-top: 10px;
+}
+
 .imageAttribution {
   font-size: small;
   opacity: 0.5;

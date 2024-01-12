@@ -7,9 +7,7 @@ import './App.css';
 function App() {
   return (
     <div className="app">
-      <div className="header">
-        <h1>Ship's Time</h1>
-      </div>
+      <h1>Ship's Time</h1>
       <CurrentWatch/>
       <Watches/>
       <div className="imageAttribution">
