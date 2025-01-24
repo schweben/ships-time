@@ -16,7 +16,7 @@ export default class TimeService {
 	}
 
 	getShipsTime(currentTime) {
-		let time = new Date(currentTime.getTime());
+		const time = new Date(currentTime.getTime());
 		let watch = this.getCurrentWatch(time);
 		let bells;
 		try {
@@ -29,6 +29,19 @@ export default class TimeService {
 		const bellText = this.#getBellText(bells);
 
 		return `${bellText} of the ${watch.name}`;
+	}
+
+	getBells(currentTime) {
+		const time = new Date(currentTime.getTime());
+		let watch = this.getCurrentWatch(time);
+		let bells;
+		try {
+			bells = watch.getBells(time);
+		} catch (Error) {
+			watch = this.#getPreviousWatch(watch);
+			bells = watch.getBells(time);
+		}
+		return bells;
 	}
 
 	getCurrentWatch(time) {
