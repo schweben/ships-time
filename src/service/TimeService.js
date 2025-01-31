@@ -8,7 +8,7 @@ export default class TimeService {
 		new Watch('Forenoon Watch', 8, 12),
 		new Watch('Afternoon Watch', 12, 16),
 		new Watch('First Dog Watch', 16, 18),
-		new Watch('Last Dog Watch', 18, 20),
+		new Watch('Second Dog Watch', 18, 20),
 	];
 
 	getWatches() {
