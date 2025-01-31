@@ -5,6 +5,8 @@ import singleDing from '../audio/single_ding.wav';
 import doubleDing from '../audio/double_ding.wav';
 
 export default function CurrentWatch() {
+	const DING_INTERVAL = 500;
+
 	const [time, setTime] = useState(new Date());
 	const shipsTime = useRef();
 	const singleDingAudio = useRef();
@@ -38,16 +40,14 @@ export default function CurrentWatch() {
 
 		// Multiply audio length by 1000 to get duration in ms
 		const duration = doubleDingAudio.current.duration * 1000;
-		const interval = 500;
 
-		console.log(`Ringing ${numBells} bells with ${iterations} iterations`);
+		console.log(`Ringing ${numBells} bells`);
 		// Iterate over the double dings
 		for (let i = 0; i < iterations; i++) {
 
 			// Pause in between repetitions
-			const pause = (duration + interval) * i;
+			const pause = (duration + DING_INTERVAL) * i;
 			setTimeout(() => {
-				console.log(`${i} Ding Ding`);
 				doubleDingAudio.current.play();
 			}, pause);
 		}
@@ -55,9 +55,8 @@ export default function CurrentWatch() {
 		// Now calculate if a single ding is required
 		if (numBells % 2 > 0) {
 			// Wait for the double dings to complete
-			const pause = (duration + interval) * iterations;
+			const pause = (duration + DING_INTERVAL) * iterations;
 			setTimeout(() => {
-				console.log('Ding');
 				singleDingAudio.current.play();
 			}, pause);
 		}
@@ -67,7 +66,6 @@ export default function CurrentWatch() {
 		<div className={styles.time}>
 			<h2>{shipsTime.current}</h2>
 			<h2>{time.toLocaleTimeString()}</h2>
-			<button onClick={playBells}>Ring bells</button>
 			<div>
 				<audio ref={singleDingAudio}>
 					<source src={singleDing}></source>

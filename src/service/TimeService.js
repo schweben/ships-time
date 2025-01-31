@@ -33,15 +33,12 @@ export default class TimeService {
 
 	getBells(currentTime) {
 		const time = new Date(currentTime.getTime());
-		let watch = this.getCurrentWatch(time);
-		let bells;
+		const watch = this.getCurrentWatch(time);
 		try {
-			bells = watch.getBells(time);
+			return watch.getBells(time);
 		} catch (Error) {
-			watch = this.#getPreviousWatch(watch);
-			bells = watch.getBells(time);
+			return this.#getPreviousWatch(watch).getBells(time);
 		}
-		return bells;
 	}
 
 	getCurrentWatch(time) {
