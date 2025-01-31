@@ -1,6 +1,6 @@
 import React from 'react';
-import CurrentWatch from './components/CurrentWatch';
-import Watches from './components/Watches';
+import CurrentWatch from './CurrentWatch';
+import Watches from './Watches';
 
 import './App.css';
 
