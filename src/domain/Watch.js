@@ -59,7 +59,11 @@ export class Watch {
             bells++;
         }
 
-        if (bells === 0 || bells > this.getMaxBells()) {
+        if (bells === 0 ) {
+            throw new Error('Bells cannot be 0');
+        }
+
+        if (bells > this.getMaxBells()) {
             throw new Error('Time is not in watch');
         }
 
