@@ -11,11 +11,11 @@ export default class TimeService {
 		new Watch('Second Dog Watch', 18, 20),
 	];
 
-	getWatches() {
+	getWatches = () => {
 		return this.watches;
 	}
 
-	getShipsTime(currentTime) {
+	getShipsTime = (currentTime) => {
 		const time = new Date(currentTime.getTime());
 		let watch = this.getCurrentWatch(time);
 		let bells;
@@ -31,7 +31,7 @@ export default class TimeService {
 		return `${bellText} of the ${watch.name}`;
 	}
 
-	getBells(currentTime) {
+	getBells = (currentTime) => {
 		const time = new Date(currentTime.getTime());
 		const watch = this.getCurrentWatch(time);
 		try {
@@ -41,7 +41,7 @@ export default class TimeService {
 		}
 	}
 
-	getCurrentWatch(time) {
+	getCurrentWatch = (time) => {
 		let currentWatch = null;
 
 		this.watches.forEach((watch) => {
@@ -53,7 +53,7 @@ export default class TimeService {
 		return currentWatch;
 	}
 
-	#getPreviousWatch(currentWatch) {
+	#getPreviousWatch = (currentWatch) => {
 		for (let i = 0; i < this.watches.length; i++) {
 
 			if (this.watches[i] === currentWatch) {
@@ -66,7 +66,7 @@ export default class TimeService {
 		}
 	}
 
-	#getBellText(bells) {
+	#getBellText = (bells) => {
 		switch (bells) {
 			case 1:
 				return 'One bell';
