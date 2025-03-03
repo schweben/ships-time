@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import { Watch } from '../domain/Watch';
 
 describe('Watch should correctly determine if a given time is within its range', () => {
