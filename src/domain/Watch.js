@@ -24,11 +24,7 @@ export class Watch {
             time.setDate(time.getDate() + 1);
         }
 
-        if ((startTime <= time) && (endTime > time)) {
-            return true;
-        }
-
-        return false;
+        return ((startTime <= time) && (endTime > time));
     }
 
     getBells(time) {
