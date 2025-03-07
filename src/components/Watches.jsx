@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getCurrentWatch, getWatches } from '../service/TimeService';
+import { getCurrentWatch, getWatches } from '../service/timeService';
 import styles from '../styles/watches.module.css';
 
 export default function Watches() {

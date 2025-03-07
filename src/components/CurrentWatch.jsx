@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { getShipsTime, getBells } from '../service/TimeService';
+import { getShipsTime, getBells } from '../service/timeService';
 import styles from '../styles/currentwatch.module.css';
 import singleDing from '../audio/single_ding.wav';
 import doubleDing from '../audio/double_ding.wav';

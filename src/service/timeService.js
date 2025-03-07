@@ -1,4 +1,4 @@
-import { Watch } from '../domain/Watch';
+import { Watch } from '../domain/watch';
 
 const watches = [
 	new Watch('First Watch', 20, 0),

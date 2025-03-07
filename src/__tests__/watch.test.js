@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { Watch } from '../domain/Watch';
+import { Watch } from '../domain/watch';
 
 describe('Watch should correctly determine if a given time is within its range', () => {
     const watch = new Watch('Test', 1, 2);
