@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import TimeService from '../service/TimeService';
+import { getShipsTime, getBells } from '../service/TimeService';
 import styles from '../styles/currentwatch.module.css';
 import singleDing from '../audio/single_ding.wav';
 import doubleDing from '../audio/double_ding.wav';
@@ -13,14 +13,11 @@ export default function CurrentWatch() {
 	const doubleDingAudio = useRef();
 	const lastRungMins = useRef();
 
-	const timeService = new TimeService();
-
-
 	useEffect(() => {
 		const timer = setInterval(() => {
 			let date = new Date();
 			setTime(date);
-			shipsTime.current = timeService.getShipsTime(date);
+			shipsTime.current = getShipsTime(date);
 			if ((date.getMinutes() === 0 || date.getMinutes() === 30) && lastRungMins.current !== date.getMinutes()) {
 				playBells();
 				lastRungMins.current = date.getMinutes();
@@ -33,7 +30,7 @@ export default function CurrentWatch() {
 	});
 
 	function playBells() {
-		const numBells = timeService.getBells(new Date())
+		const numBells = getBells(new Date())
 
 		// Calculate the number of double-rings required
 		const iterations = Math.floor(numBells / 2);
@@ -66,6 +63,7 @@ export default function CurrentWatch() {
 		<div className={styles.time}>
 			<h2>{shipsTime.current}</h2>
 			<h2>{time.toLocaleTimeString()}</h2>
+			<button onClick={playBells}>Ring bells</button>
 			<div>
 				<audio ref={singleDingAudio}>
 					<source src={singleDing}></source>
