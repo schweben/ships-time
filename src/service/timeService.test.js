@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { getBells, getCurrentWatch, getShipsTime, getWatches } from "../service/timeService";
+import { getBells, getCurrentWatch, getShipsTime, getWatches } from "./timeService";
 
 describe('Test that watches are defined correctly', () => {
 

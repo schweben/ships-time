@@ -1,8 +1,8 @@
 import { describe, expect, test, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import App from '../components/App';
-import CurrentWatch from '../components/CurrentWatch';
-import Watches from '../components/Watches';
+import App from './App';
+import CurrentWatch from './CurrentWatch';
+import Watches from './Watches';
 
 describe('App component', () => {
 
