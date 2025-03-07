@@ -63,7 +63,6 @@ export default function CurrentWatch() {
 		<div className={styles.time}>
 			<h2>{shipsTime.current}</h2>
 			<h2>{time.toLocaleTimeString()}</h2>
-			<button onClick={playBells}>Ring bells</button>
 			<div>
 				<audio ref={singleDingAudio}>
 					<source src={singleDing}></source>
